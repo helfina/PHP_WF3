@@ -422,19 +422,34 @@ function semaine(){
 
 echo semaine() .'<br>'; //Appel et execution de la fonction
 
-echo $jour . '<br>'; //ERROR 'undefined', car la variable n'est pas definie dans l'espace globale MAIS uniquement dans le scope (espace local) de la fonction
+//echo $jour . '<br>'; //ERROR 'undefined', car la variable n'est pas definie dans l'espace globale MAIS uniquement dans le scope (espace local) de la fonction
 
+//----------------------------------------------
+$pays = "France"; //Declaration d'une variable dans l'espace global
 
+function affichePays(){
 
+    global $pays; //le mot cle "global" permet de rappatrier un element declare dans l'espace global a l'interieur d'un espace local
 
+    //$pays = 'Maroc'; //Ok, la ligne ci-dessus fonctionne si on declare la variable dans l'espace local.
 
+    echo $pays . '<br>';
+}
 
+affichePays(); //appel et execution de la fonction
 
+//---------------------------------------------------------
+//EXERCICE : Creer une fonction TVA qui attendra DEUX arguments (chiffre et taux) afin que l'on puisse afficher et calculer le nouveau prix :
+    //Bonus : mettre un taux par defaut (1.2)
 
+    function TVA( $chiffre, $taux = 1.2 ){
 
+        return "La tva : ". $chiffre * $taux . '<br>';
+    }
 
+    echo TVA( 2000, 1.5 ); //Appel et execution de la fonction avec les DEUX ARGUMENTS PREVUS
 
-
+    echo TVA( 1000 ); //Appel et execution de la fonction AVEC UN SEUL ARGUMENT, du coup, le second argument prendra la valeur par defaut 1.2 que l'on a precise en aprametre de la fonction
 
 
 
