@@ -1,11 +1,8 @@
 <!-- On peut écrire du HTML dans un fichier avec l'extension .php MAIS L'INVERSE N'EST PAS POSSIBLE -->
 <style>
-    h1 {
-        text-align: center;
-    }
-
-    h2 {
-        color: orange;
+    h1{text-align:center;}
+    h2{
+        color:orange;
         background: black;
         text-align: center;
     }
@@ -61,32 +58,32 @@ $a = 345; //Declaration d'une variable nommee "a" et on lui a affecte la valeur 
 
 echo $a; //affichage de la variable $a
 
-echo "<br>" . gettype($a) . "<br>"; //integer (nombre entier)
+echo "<br>" . gettype( $a ) . "<br>"; //integer (nombre entier)
 //gettype( $arg ) : fonction interne de php qui permet de connaitre le type d'une variable passee argument
 
 //-----------------------------------------------
 $a = "Bonjour tout le monde"; //Ici, on reaffecte la valeur de la variable $a. J'ecrase '345' et remplace par la phrase "Bonjour tout le monde"
 
 echo $a;
-echo "<br>" . gettype($a) . "<br>"; //string (=chaine de caracteres)
+echo "<br>" . gettype( $a ) . "<br>"; //string (=chaine de caracteres)
 
 //-----------------------------------------------
 $a = "45"; //reaffectation avec un nombre AVEC quotes
 
 echo $a;
-echo "<br>" . gettype($a) . "<br>"; //string (=chaine de caracteres)
+echo "<br>" . gettype( $a ) . "<br>"; //string (=chaine de caracteres)
 
 //-----------------------------------------------
 $a = 1.23; //reaffectation avec un nombre a virgule qui s'ecrire avec le symbole point et non aps la virgule...
 
 echo $a;
-echo "<br>" . gettype($a) . "<br>"; //double (=nombre a virgule)
+echo "<br>" . gettype( $a ) . "<br>"; //double (=nombre a virgule)
 
 //-----------------------------------------------
 $a = true; //reaffectation avec un boolean (true ou false)
 
 echo $a;
-echo "<br>" . gettype($a) . "<br>"; //boolean
+echo "<br>" . gettype( $a ) . "<br>"; //boolean
 
 //------------------------------------------------------------------------
 echo "<h2> La concatenation </h2>";
@@ -130,7 +127,7 @@ $b = "blanc";
 $c = "rouge";
 
 echo " $a - $b - $c <br>";
-echo $a . " - " . $b . " - " . $c . '<br>';
+echo $a . " - " . $b . " - ".  $c . '<br>';
 
 $couleur = "Bleu";
 $couleur .= " - blanc";
@@ -142,7 +139,7 @@ echo $couleur . '<br>';
 echo "<h2> Les constantes et les constantes magiques </h2>";
 //Une constante : est un espace nomme qui permet de conserer une valeur SAUF QUE, ici comme son nom l'indique la valeur sera contante !
 
-define('CAPITALE', 'Paris'); //Par CONVENTION, on nommera une constante TOUJOURS EN MAJUSUCLE
+define( 'CAPITALE', 'Paris' ); //Par CONVENTION, on nommera une constante TOUJORUS EN MAJUSUCLE
 
 //define( arg1, arg2 )
 // arg1 : le nom de la constante (MAJUSUCLE)
@@ -155,7 +152,7 @@ echo CAPITALE . '<br>';
 //------------------------------------------------------
 //Constantes magiques : constantes internes de php
 
-echo __LINE__ . '<br>'; //Affiche le numero de la ligne courante (ici : 158)
+echo __LINE__ . '<br>'; //Affiche le numero de la ligne courante (ici : 155)
 echo __FILE__ . '<br>'; //Affiche le chemin complet du fichier courant
 echo __DIR__ . '<br>'; //Affiche le chemin complet du dossier courant
 
@@ -196,12 +193,12 @@ echo "<h2> Structures conditionnelles (if/else) </h2>";
 $vara = 0;
 $varb = "";
 
-if (empty($vara)) { //Si la variable $vara est vide, 0 ou non definie, alors la fonction empty() renverra true et donc on execute le code entre les accolades
+if( empty( $vara ) ){ //Si la variable $vara est vide, 0 ou non definie, alors la fonction empty() renverra true et donc on execute le code entre les accolades
 
     echo "Vara : 0, vide ou non definie <br>";
 }
 
-if (isset($varb)) { //Si la variable $varb existe,alors la fonction isset() renverra true et donc on execute le code entre les accolades
+if( isset( $varb ) ){ //Si la variable $varb existe,alors la fonction isset() renverra true et donc on execute le code entre les accolades
 
     echo "Varb : existe et est definie par rien.. <br>";
 }
@@ -213,36 +210,39 @@ $a = 10;
 $b = 5;
 $c = 2;
 
-if ($a > $b) { // Si $a (10) est superieur a $b (5) alors , on execute le code entre les accolades
+if( $a > $b ){ // Si $a (10) est superieur a $b (5) alors , on execute le code entre les accolades
 
     echo "A est superieur a B <br>";
-} else { //SINON... (cas par defaut)
+}
+else{ //SINON... (cas par defaut)
 
     echo "FAUX : A N'EST PAS superieur a B <br>";
 }
 
 //----------------------------------------------
 //ET : &&
-if ($a > $b && $b < $c) { //SI $a (10) est superieur a $b (5) - ET QUE - $b (5) est superieur a $c (2) alors on execute le code entre les accolades
+if( $a > $b && $b < $c ){ //SI $a (10) est superieur a $b (5) - ET QUE - $b (5) est superieur a $c (2) alors on execute le code entre les accolades
 
     echo "Ok pour les deux comparaisons <br>";
 }
 
 //-----------------------------------------------
 //OU et || (PC :AltGr+6 | MAC : Alt+MAJ+L)
-if ($a == 9 || $b > $c) { //SI $a (10) est egal a 9 - OU QUE - $b (5) est superieur a $c (2), alors on execute le code entre les accolades
+if( $a == 9 || $b > $c ){ //SI $a (10) est egal a 9 - OU QUE - $b (5) est superieur a $c (2), alors on execute le code entre les accolades
 
     echo "Ok pour au moins une des deux conditions <br>";
 }
 
 //------------------------------------------------
-if ($a == 8) { //SI $a (10) est egal a 8
+if( $a == 8 ){ //SI $a (10) est egal a 8
 
     echo "A est egal a 8 <br>";
-} else if ($a != 10) { //SINON SI $a (10) est different de 10
+}
+else if( $a != 10 ){ //SINON SI $a (10) est different de 10
 
     echo "A est different de 10 <br>";
-} else { //SINON (cas par defaut)
+}
+else{ //SINON (cas par defaut)
 
     echo "Tout est faux !<br>";
 }
@@ -250,35 +250,37 @@ if ($a == 8) { //SI $a (10) est egal a 8
 //--------------------------------------------------
 //Version ternaire : forme contractee d'une condition if/else
 
-if ($a == 10) {
+if( $a == 10 ){
 
     echo "A est egal a 10<br>";
-} else {
+}
+else{
 
     echo "Faux <br>";
 }
 
-echo ($a == 10) ? "A est egal a 10 <br>" : "Faux <br>";
+echo ( $a == 10 ) ? "A est egal a 10 <br>" : "Faux <br>";
 //ICI, le "?" remplace le "if" et les deux points ":" remplacent le "else"
 
 //-----------------------------------------------
 //Comparaison :
 $vara = 1;  //integer
-echo '$vara est de type : ' . gettype($vara) . "<br>";
+echo '$vara est de type : ' . gettype( $vara ) . "<br>";
 
 $varb = "1"; //String
-echo '$varb est de type : ' . gettype($varb) . "<br>";
+echo '$varb est de type : ' . gettype( $varb ) . "<br>";
 
-if ($vara == $varb) { //true
+if( $vara == $varb ){ //true
 
     echo "Il s'agit de la meme chose car la valeur est la meme<br>";
 }
 
 //-----------------------------------------
-if ($vara === $varb) { //false
+if( $vara === $varb ){ //false
 
     echo "Il s'agit de la meme chose car la valeur est la meme<br>";
-} else {
+}
+else{
 
     echo "L'egalite est fausse puisque le type est differente alors que la valeur est la meme <br>";
 }
@@ -309,7 +311,7 @@ echo "<h2> Conditions SWITCH </h2>";
 
 $couleur = "orange";
 
-switch ($couleur) { //Ici, on compare la variable $couleur aux differents cas du switch
+switch( $couleur ){ //Ici, on compare la variable $couleur aux differents cas du switch
     case 'vert' :
         echo "J'aime le vert <br>";
         break;
@@ -324,101 +326,73 @@ switch ($couleur) { //Ici, on compare la variable $couleur aux differents cas du
 }
 
 //EXERCICE : retranscrire le switch ci-dessus en condition if/else OU avec l'operateur (||) OU la version ternaire OU la ternaire avec le ||
-if ($couleur == 'vert') {
+if( $couleur == 'vert' ){
 
     echo "J'aime le vert <br>";
-} else if ($couleur == 'rouge') {
+}
+else if( $couleur == 'rouge' ){
 
     echo "J'aime le rouge <br>";
-} else if ($couleur == 'bleu') {
+}
+else if( $couleur == 'bleu' ){
 
     echo "J'aime le bleu <br>";
-} else {
+}
+else{
     echo "J'aime pas la couleur<br>";
 }
 
 //Version courte :
-if ($couleur == 'rouge' || $couleur == 'bleu' || $couleur == 'vert') {
+if( $couleur == 'rouge' || $couleur == 'bleu' || $couleur == 'vert' ){
 
     echo "J'aime le $couleur <br>";
-} else {
+}
+else{
     echo "J'aime pas la couleur<br>";
 }
 
 //Version ternaire 'courte' :
 
-echo ($couleur == 'rouge' || $couleur == 'bleu' || $couleur == 'vert') ? "J'aime le $couleur <br>" : "J'aime pas la couleur<br>";
+echo ( $couleur == 'rouge' || $couleur == 'bleu' || $couleur == 'vert' ) ? "J'aime le $couleur <br>" : "J'aime pas la couleur<br>";
 
 //Version ternaire 'longue' :
-echo ($couleur == 'vert') ? "J'aime le vert <br>" :
-    (($couleur == 'rouge') ? "J'aime le rouge <br>" :
-        (($couleur == 'bleu') ? "J'aime le bleu <br>" : "J'aime pas la couleur<br>"));
-
-//--------------------------------------------------------------------------------------------
-echo "<h2> FOnctions predefinies</h2>";
-
-//https://www.php.net/manual/fr/datetime.format.php
-
-echo "Date : " . date("d:m:Y") . "<br>";
-echo "Date : " . date("d/m/Y") . "<br>";
-
-$email = 'jeremie@webforce3.com';
-echo strpos($email, "@") . '<br>';
-
-// https://www.php.net/manual/fr/function.strpos.php
-//strpos( arg1 , arg2 ); Indique la position d'un caractere dans une chaine
-//arg1 : la chaine a parcourir
-//arg2 : ce quel'on recherche
-
-//ATTENTION, ici, la fonction affiche 7 car on commence a compter a partir de ZERO !!
-
-$phrase = "Voici une phrase";
-
-echo strlen($phrase) . '<br>';
-//strlen( arg ) : retourne la taille de la chaine de caracteres passee en argument
-
-$texte = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, in aliquid. Consequuntur sunt ab, accusamus nemo ad quis at eum dolor perferendis facere porro ipsum fugit harum quasi tempore saepe.";
-
-echo substr($texte, 0, 20) . "...<a href='#'>Lire la suite</a> <br>";
-//substr( arg1, arg2, arg3 ): permet de retourne une partie de la chaine
-//arg1 : la chaine que l'on souhaite couper
-//arg2 : la position de depart (ou on commence) ici, on commence a la position ZERO qui correspond a la premiere lettre
-//arg3 : la longueur de la decoupe
-
-//--------------------------------------------------------------------
-echo "<h2> Fonctions utilisateurs </h2>";
-
-function separation()
-{ //Declaration d'une fonction nommee 'separation' prevue pour ne pas recevoir d'argument car les parentheses OBLIGATOIRES sont vides
-
-    echo "<hr><hr>";
-}
-
-separation(); //Appel et execution de la fonction TOUJOURS AVEC LES PARENTHESES
-
-//----------------------------------------------
-function bonjour($qui)
-{ //Fonction prevue pour recevoir UN argument, ici '$qui'
-
-    return "Bonjour " . $qui . "<br>";
-}
-
-echo bonjour("Martine"); //Appel et execution de la fonction
-
-//Si la fonction est prevue pour recevoir un argument ALORS il faut OBLIGATOIREMENT lui envoyer un argument en parametre sinon on aura une error fatal.
-
-//Quand il y a un "return" dans une fonction, il faudra faire un "echo" de la fonction pour avoir un affichage;
+echo ( $couleur == 'vert') ? "J'aime le vert <br>" :
+    ( ( $couleur == 'rouge' ) ? "J'aime le rouge <br>" :
+        ( ( $couleur == 'bleu' ) ? "J'aime le bleu <br>" : "J'aime pas la couleur<br>" ) );
 
 
-//----------------------------------------------
-function semaine()
-{
-    echo "test <hr>"; // s'affiche 'normalement'
-    $jour = "lundi";
-    return $jour;
-}
 
-echo semaine() . '<br>'; // Appel et execution de la fonction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
