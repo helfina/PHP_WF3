@@ -449,26 +449,164 @@ affichePays(); //appel et execution de la fonction
 //Bonus : mettre un taux par defaut (1.2)
 
 
-function tva(int $chiffre, $taux)
+/*function tva(int $chiffre, $taux)
 {
     $taux = 1.2;
     $calcul = $chiffre * $taux;
     return $calcul;
 }
 
-echo tva(100,1.2);
+echo tva(100,1.2);*/
 
 //correction EXERCICE : Creer une fonction TVA qui attendra DEUX arguments (chiffre et taux) afin que l'on puisse afficher et calculer le nouveau prix :
 //Bonus : mettre un taux par defaut (1.2)
 
-function TVA( $chiffre, $taux = 1.2 ){
+function TVA($chiffre, $taux = 1.2)
+{
 
-    return "La tva : ". $chiffre * $taux . '<br>';
+    return "La tva : " . $chiffre * $taux . '<br>';
 }
 
-echo TVA( 2000, 1.5 ); //Appel et execution de la fonction avec les DEUX ARGUMENTS PREVUS
+echo TVA(2000, 1.5); //Appel et execution de la fonction avec les DEUX ARGUMENTS PREVUS
 
-echo TVA( 1000 ); //Appel et execution de la fonction AVEC UN SEUL ARGUMENT, du coup, le second argument prendra la valeur par defaut 1.2 que l'on a precise en aprametre de la fonction
+echo TVA(1000); //Appel et execution de la fonction AVEC UN SEUL ARGUMENT, du coup, le second argument prendra la valeur par defaut 1.2 que l'on a precise en aprametre de la fonction
+
+//---------------------------------------------------------
+//EXERCICE : Creer une fonction meteo avec 2 arguments (temperature et la saison) qui permet d'afficher la phrase suivante :
+
+//"Nous sommes en saison et il fait temperature degres <br>"
+
+//Exercice : Gerer l'article 'au' SI la saison est 'printemps' et gerer le 's' de degre SI on est au dessus (2°) OU en dessous en (-2°)
+
+function meteo($temperature, $saison)
+{
+
+    $temperature >= 2 || $temperature <= -2 ? $s = 's ' : $s = '';
+
+    $saison == 'printemps' ? $debutPhrase = "Nous sommes au " : $debutPhrase = 'Nous sommes en ';
+
+    return $debutPhrase . $saison . " et il fait " . $temperature . " degre" . $s . "<br>";
+
+}
+
+echo meteo(-1, 'hiver') . "<br>";
+echo meteo(3, 'automne') . "<br>";
+echo meteo(12, 'printemps') . "<br>";
+echo meteo(25, 'ete') . "<br>";
+
+//-----------------------------------------------------
+//Exercice : creer une fonction rouler qui attend 3 arguments (vehicule, vitesse et la limitation) qui permet d'afficher :
+
+//"Je roule en vehicule a vitesse km/h sur une route limitee à limitation km/h."
+
+//SUITE EXERCICE :
+
+//Si le vehicule est different de velo, moto, camion et voiture, j'affiche :
+//"T'as rien a faire sur une route"
+
+//Si la vitesse est superieure à la limitation alors j'affiche :
+//"je suis en infraction et je perd 1 pt"
+
+//si la limitation est superieur a 40km/h, j'affiche :
+//"je perds mon permis."
+
+//si je respecte la limitation j'affiche la phrase :
+//"Je roule en vehicule a vitesse km/h sur une route limitee à limitation km/h."
+
+function rouler(string $vehicule, int $vitesse, int $limitation)
+{
+
+    $phrase = "Je roule en " . $vehicule . " a " . $vitesse . " km/h sur une route limitee à " . $limitation . " km/h.";
+
+    ($vehicule != "vélo" && $vehicule != 'moto' && $vehicule != 'camion' && $vehicule != 'voiture') ? $phrase = "T'as rien a faire sur une route" : $phrase;
+
+    $limitation > ($limitation + 40) ? $phrase = "je perds mon permis." : $phrase;
+
+    $vitesse > $limitation ? $phrase = "je suis en infraction et je perd 1 pt" : $phrase;
+
+    return $phrase;
+}
+
+echo rouler('pietons', 5, 40) . "<br><hr><br>";
+echo rouler('camion', 35, 40) . "<br><hr><br>";
+echo rouler('vélo', 40, 60) . "<br><hr><br>";
+echo rouler('moto', 150, 90) . "<br><hr><br>";
+echo rouler('avion', 400, 60) . "<br><hr><br>";
+echo rouler('voiture', 80, 90) . "<br><hr><br>";
 
 
+/*soluce Nuno test
+function rouler2($vehicule, $vitesse, $limitation)
+{
+    echo "Je roule en $vehicule a $vitesse km/h sur une route limitee à $limitation km/h. <br>";
+
+    if ($vehicule != "velo" && $vehicule != "moto" && $vehicule != "camion" && $vehicule != "voiture") {
+        echo "T'as rien a faire sur une route.";
+    } elseif ($vitesse > 40) {
+        echo "je perds mon permis.";
+    } elseif ($vitesse > $limitation) {
+        echo "je suis en infraction et je perd 1 pt";
+    } elseif ($vitesse < $limitation) {
+        echo "Je roule en $vehicule a $vitesse km/h sur une route limitee à $limitation km/h. <br>";
+    }
+}
+
+echo rouler2("velo", 41, 30);
+
+*/
+
+//--------------------------------------------------------------------
+echo "<h2> Le structures iteratives : les boucles </h2>";
+//Une boucle : permet de repeter une portion TANT qu'une condition est realisee.
+
+//Boucle WHILE :
+$i = 0;
+
+while( $i < 5 ){ //TANT QUE $i est inferieur a 5, alors on execute le code entre les accolades
+
+    echo " $i => ";
+
+    $i++; //$i = $i + 1
+}
+
+echo "<hr>";
+//  Faites en sortes, via une boucle while, d'enlever la fleche "a la fin" , c'est a dire apres le 4
+//Resultat attendu : 0 => 1 => 2 => 3 => 4
+
+$a = 0;
+while( $a < 5 ){
+
+    if ($a < 4 ){
+        echo " $a => ";
+    }else{
+
+        echo " $a ";
+    }
+    $a++; //$i = $i + 1
+
+}
+
+echo "<hr>";
+
+
+
+//  corection Faites en sortes, via une boucle while, d'enlever la fleche "a la fin" , c'est a dire apres le 4
+//Resultat attendu : 0 => 1 => 2 => 3 => 4
+
+$i = 0; //Réinitilisation a zero, car avec la boucle précédente $i vaut 5 !
+
+while( $i < 5 ){ //TANT QUE $i est inferieur a 5, alors on execute le code entre les accolades
+
+    if(  $i == 4 ){ //Si la valeur de $i est egal à 4 , alors on affiche uniquement la valeur de $i sans la fleche
+
+        echo $i;
+    }
+    else{
+
+        echo " $i ===> ";
+    }
+    //echo ( $i == 4 ) ? $i : "$i ==>";
+
+    $i++; //$i = $i + 1
+}
 echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
