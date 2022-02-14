@@ -14,15 +14,15 @@
 
 <?php //Balise ouvrante d'un passage php
 
-//Ici, on ouvre passage php pour y faire des traitements php
+    //Ici, on ouvre passage php pour y faire des traitements php
 
-/*
-    Commentaires
-    sur plusieurs
-    lignes
-*/
+    /*
+        Commentaires
+        sur plusieurs
+        lignes
+    */
 
-// CHAQUE INSTRUCTION DOIT SE TERMINER PAR UN POINT VIRGULE
+    // CHAQUE INSTRUCTION DOIT SE TERMINER PAR UN POINT VIRGULE
 
 ?>
 <!-- balise fermante -->
@@ -33,7 +33,7 @@ echo "Bonjour tout le monde"; //echo est une instruction qui permet de faire un 
 
 print '<br><strong> Salut </strong>'; //print est aussi une instruction pour faire un affichage (mais qui est un peu plus long que le 'echo')
 
-//On peut y mettre des balises html qui seront interpretees par le navigateur
+    //On peut y mettre des balises html qui seront interpretees par le navigateur
 
 ?>
 
@@ -98,10 +98,10 @@ echo $x . ' tout ' . $y . '<br>';
 //Les doubles quotes (guillemets) permettent d'interpreter les variables ALORS que les quotes simples (apostrophes) N'INTERPRETENT PAS les variables et renverra donc une chaine de caracteres
 
 echo 'Avec les quotes simples : $x $y <br>'; // ici, affiche : $x $y
-// => QUOTES SIMPLES : les variables NE SONT PAS INTERPETEES
+    // => QUOTES SIMPLES : les variables NE SONT PAS INTERPETEES
 
 echo "Avec les quotes doubles : $x $y <br>"; // ici, affiche : Bonjour tout le monde
-// => QUOTES DOUBLES : les variables SONT INTERPETEES
+    // => QUOTES DOUBLES : les variables SONT INTERPETEES
 
 //-------------------------------------------
 echo "<h2> Concatenation lors de l'affectation </h2>";
@@ -116,7 +116,7 @@ echo $prenom . '<br>'; //affichage 'polo'
 $pseudo = "Anne";
 echo $pseudo . "<br>"; //Affiche 'Anne'
 
-$pseudo .= "-Marie"; //Affectaion de la valeur '-Marie' dans la variable '$pseudo' MAIS cela s'ajoute SANS REMPLACER la velur precedente grace a l'operateur '.=' ;
+$pseudo .= "-Marie"; //Affectation de la valeur '-Marie' dans la variable '$pseudo' MAIS cela s'ajoute SANS REMPLACER la velur precedente grace a l'operateur '.=' ;
 echo $pseudo . '<br>';
 
 //--------------------------------------------------------------------------
@@ -142,12 +142,12 @@ echo "<h2> Les constantes et les constantes magiques </h2>";
 define( 'CAPITALE', 'Paris' ); //Par CONVENTION, on nommera une constante TOUJORUS EN MAJUSUCLE
 
 //define( arg1, arg2 )
-// arg1 : le nom de la constante (MAJUSUCLE)
-// arg2 : la valeur de la constante
+    // arg1 : le nom de la constante (MAJUSUCLE)
+    // arg2 : la valeur de la constante
 
 echo CAPITALE . '<br>';
 
-//define( 'CAPITALE', 'Moscou' ); //ERROR , la constante a deja ete declaree
+    //define( 'CAPITALE', 'Moscou' ); //ERROR , la constante a deja ete declaree
 
 //------------------------------------------------------
 //Constantes magiques : constantes internes de php
@@ -175,10 +175,10 @@ echo $a . '<br>'; //12
 $a -= $b; //equivaut $a = $a - $b
 echo $a . '<br>'; // 10
 
-$a /= $b; //equivaut $a = $a + $b
+$a /= $b; //equivaut $a = $a / $b
 echo $a . '<br>'; // 5
 
-$a *= $b; //equivaut $a = $a + $b
+$a *= $b; //equivaut $a = $a* $b
 echo $a . '<br>'; // 10
 
 //--------------------------------------------------------------------
@@ -186,9 +186,9 @@ echo "<h2> Structures conditionnelles (if/else) </h2>";
 
 //isset() et empty() : 2 fonctions internes de PHP
 
-//isset() : teste si ca existe (si c'est defini), la fonction renverra true ou false
+    //isset() : teste si ca existe (si c'est defini), la fonction renverra true ou false
 
-//empty() : teste si c'est vide (0 ou non defini), la fonction renverra true ou false
+    //empty() : teste si c'est vide (0 ou non defini), la fonction renverra true ou false
 
 $vara = 0;
 $varb = "";
@@ -314,13 +314,13 @@ $couleur = "orange";
 switch( $couleur ){ //Ici, on compare la variable $couleur aux differents cas du switch
     case 'vert' :
         echo "J'aime le vert <br>";
-        break;
+    break;
     case 'rouge':
         echo "J'aime le rouge <br>";
-        break;
+    break;
     case 'bleu':
         echo "J'aime le bleu <br>";
-        break;
+    break;
     default : //Cas par defaut si on ne rentre dans les cas precedents
         echo "J'aime pas la couleur <br>";
 }
@@ -352,7 +352,6 @@ else{
 }
 
 //Version ternaire 'courte' :
-
 echo ( $couleur == 'rouge' || $couleur == 'bleu' || $couleur == 'vert' ) ? "J'aime le $couleur <br>" : "J'aime pas la couleur<br>";
 
 //Version ternaire 'longue' :
@@ -360,43 +359,37 @@ echo ( $couleur == 'vert') ? "J'aime le vert <br>" :
     ( ( $couleur == 'rouge' ) ? "J'aime le rouge <br>" :
         ( ( $couleur == 'bleu' ) ? "J'aime le bleu <br>" : "J'aime pas la couleur<br>" ) );
 
+//--------------------------------------------------------------------
+echo "<h2> Fonctions predefinies </h2>";
 
-//--------------------------------------------------------------------------------------------
-echo "<h2> FOnctions predefinies</h2>";
-
-//https://www.php.net/manual/fr/datetime.format.php
-
-echo "Date : " . date("d:m:Y") . "<br>";
-echo "Date : " . date("d/m/Y") . "<br>";
+echo "Date : ". date("d/m/Y") . "<br>";
 
 $email = 'jeremie@webforce3.com';
-echo strpos($email, "@") . '<br>';
 
-// https://www.php.net/manual/fr/function.strpos.php
+echo strpos( $email, "@" ) . '<br>';
 //strpos( arg1 , arg2 ); Indique la position d'un caractere dans une chaine
-//arg1 : la chaine a parcourir
-//arg2 : ce quel'on recherche
+    //arg1 : la chaine a parcourir
+    //arg2 : ce quel'on recherche
 
 //ATTENTION, ici, la fonction affiche 7 car on commence a compter a partir de ZERO !!
 
 $phrase = "Voici une phrase";
 
-echo strlen($phrase) . '<br>';
+echo strlen( $phrase ) . '<br>';
 //strlen( arg ) : retourne la taille de la chaine de caracteres passee en argument
 
 $texte = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio, in aliquid. Consequuntur sunt ab, accusamus nemo ad quis at eum dolor perferendis facere porro ipsum fugit harum quasi tempore saepe.";
 
-echo substr($texte, 0, 20) . "...<a href='#'>Lire la suite</a> <br>";
+echo substr( $texte, 0, 20 ) . "...<a href='#'>Lire la suite</a> <br>" ;
 //substr( arg1, arg2, arg3 ): permet de retourne une partie de la chaine
-//arg1 : la chaine que l'on souhaite couper
-//arg2 : la position de depart (ou on commence) ici, on commence a la position ZERO qui correspond a la premiere lettre
-//arg3 : la longueur de la decoupe
+    //arg1 : la chaine que l'on souhaite couper
+    //arg2 : la position de depart (ou on commence) ici, on commence a la position ZERO qui correspond a la premiere lettre
+    //arg3 : la longueur de la decoupe
 
 //--------------------------------------------------------------------
 echo "<h2> Fonctions utilisateurs </h2>";
 
-function separation()
-{ //Declaration d'une fonction nommee 'separation' prevue pour ne pas recevoir d'argument car les parentheses OBLIGATOIRES sont vides
+function separation(){ //Declaration d'une fonction nommee 'separation' prevue pour ne pas recevoir d'argument car les parentheses OBLIGATOIRES sont vides
 
     echo "<hr><hr>";
 }
@@ -404,20 +397,18 @@ function separation()
 separation(); //Appel et execution de la fonction TOUJOURS AVEC LES PARENTHESES
 
 //----------------------------------------------
-function bonjour($qui)
-{ //Fonction prevue pour recevoir UN argument, ici '$qui'
+function bonjour( $qui ){ //Fonction prevue pour recevoir UN argument, ici '$qui'
 
     return "Bonjour " . $qui . "<br>";
 }
 
-echo bonjour("Martine"); //Appel et execution de la fonction
+echo bonjour( "Martine" ); //Appel et execution de la fonction
 
 //Si la fonction est prevue pour recevoir un argument ALORS il faut OBLIGATOIREMENT lui envoyer un argument en parametre sinon on aura une error fatal.
 
 //Quand il y a un "return" dans une fonction, il faudra faire un "echo" de la fonction pour avoir un affichage;
 
 //----------------------------------------------
-
 function semaine(){
 
     // echo "Test <hr>"; //S'affiche 'normalement'
@@ -432,9 +423,6 @@ function semaine(){
 echo semaine() .'<br>'; //Appel et execution de la fonction
 
 echo $jour . '<br>'; //ERROR 'undefined', car la variable n'est pas definie dans l'espace globale MAIS uniquement dans le scope (espace local) de la fonction
-
-
-
 
 
 
