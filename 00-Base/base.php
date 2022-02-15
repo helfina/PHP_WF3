@@ -562,7 +562,7 @@ echo "<h2> Le structures iteratives : les boucles </h2>";
 //Boucle WHILE :
 $i = 0;
 
-while( $i < 5 ){ //TANT QUE $i est inferieur a 5, alors on execute le code entre les accolades
+while ($i < 5) { //TANT QUE $i est inferieur a 5, alors on execute le code entre les accolades
 
     echo " $i => ";
 
@@ -574,11 +574,11 @@ echo "<hr>";
 //Resultat attendu : 0 => 1 => 2 => 3 => 4
 
 $a = 0;
-while( $a < 5 ){
+while ($a < 5) {
 
-    if ($a < 4 ){
+    if ($a < 4) {
         echo " $a => ";
-    }else{
+    } else {
 
         echo " $a ";
     }
@@ -589,19 +589,17 @@ while( $a < 5 ){
 echo "<hr>";
 
 
-
 //  corection Faites en sortes, via une boucle while, d'enlever la fleche "a la fin" , c'est a dire apres le 4
 //Resultat attendu : 0 => 1 => 2 => 3 => 4
 
 $i = 0; //Réinitilisation a zero, car avec la boucle précédente $i vaut 5 !
 
-while( $i < 5 ){ //TANT QUE $i est inferieur a 5, alors on execute le code entre les accolades
+while ($i < 5) { //TANT QUE $i est inferieur a 5, alors on execute le code entre les accolades
 
-    if(  $i == 4 ){ //Si la valeur de $i est egal à 4 , alors on affiche uniquement la valeur de $i sans la fleche
+    if ($i == 4) { //Si la valeur de $i est egal à 4 , alors on affiche uniquement la valeur de $i sans la fleche
 
         echo $i;
-    }
-    else{
+    } else {
 
         echo " $i ===> ";
     }
@@ -609,4 +607,88 @@ while( $i < 5 ){ //TANT QUE $i est inferieur a 5, alors on execute le code entre
 
     $i++; //$i = $i + 1
 }
+
+echo "<hr>";
+//--------------------------------------------------------
+//Boucle FOR : va repeter un nombre de fois defini les instructions entre les accolades (scope de la boucle for)
+
+//A la difference d'une boucle while() qui va repeter indefiniment les instructions entre les accolades TANT QUE la condition n'est pas realisee.
+
+for ($i = 1; $i < 11; $i++) { //10 tours de boucle
+    //Initialisation : $i = 1
+    //condition : $i < 11
+    //incrementation : $i++ <=> $i = $i + 1
+
+    echo $i . ' tour de boucle <br>';
+}
+
+//----------------------------------------------------------
+//EXERCICE : Affichez un selection option avec 52 options via une boucle 'for' DANS LE SENS INVERSE, c'est a dire pour afficher les annees allant de 2022 a 1970
+
+echo "<hr><br>";
+echo "<select name='' id=''>";
+
+
+for ($annees = 2022; $annees >= 1970; $annees--) {
+    echo "<option value=''> $annees </option>";
+}
+
+echo "</select>";
+
+//--------------------CORRECTION--------------------------------------
+//EXERCICE : Affichez un selection option avec 52 options via une boucle 'for' DANS LE SENS INVERSE, c'est a dire pour afficher les annees allant de 2022 a 1970
+echo "<select name=''>";
+
+for ($i = 2022; $i >= 1970; $i--) {
+
+    echo "<option value='$i'> $i </option>";
+}
+
+echo "</select><br>";
+
+?>
+
+<select name="" id="">
+
+    <?php for ($i = 2022; $i >= 1970; $i--) : ?>
+
+        <option value="<?= $i ?>"> <?= $i ?> </option>
+
+    <?php endfor; ?>
+
+</select>
+
+<?php
+//----------------------------------------------------------------
+//EXERCICE : Affichez les numeros allant de 1 a 10 dans un tableau SUR UNE SEULE LIGNE
+
+
+echo "<hr><br>";
+echo "<table border='2'><tbody><tr>";
+
+for ($b = 0; $b < 10; $b++) {
+    echo "<td>" . $b . "</td>";
+}
+
+echo "</tr></tbody></table>";
+
+
+//----------------------------------------------------------------
+//EXERCICE : boucles imbriquees : creer un tableau avec 10 lignes contenant 10 cellules avec les valeurs allant de 1 à 100
+echo "<hr><br>";
+echo "<table border='2'>";
+echo "<tbody>";
+$chiffre = 1;
+for ($a = 1; $a <= 10; $a++) {
+    echo "<tr>";
+    for ($c = 1; $c <= 10; $c++) {
+        echo "<td>" . $chiffre. "</td>";
+        $chiffre++;
+    }
+    echo "</tr>";
+}
+echo "</tbody>";
+echo "</table>";
+
+
 echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";

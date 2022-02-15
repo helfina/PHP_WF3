@@ -644,9 +644,102 @@ while( $i < 5 ){ //TANT QUE $i est inferieur a 5, alors on execute le code entre
         echo " $i ===> ";
     }
     //echo ( $i == 4 ) ? $i : "$i ==>";
-
     $i++; //$i = $i + 1
 }
+
+echo "<hr>";
+//--------------------------------------------------------
+//Boucle FOR : va repeter un nombre de fois defini les instructions entre les accolades (scope de la boucle for)
+
+//A la difference d'une boucle while() qui va repeter indefiniment les instructions entre les accolades TANT QUE la condition n'est pas realisee.
+
+for( $i = 1; $i < 11; $i++ ){ //10 tours de boucle
+    //Initialisation : $i = 1
+    //condition : $i < 11
+    //incrementation : $i++ <=> $i = $i + 1
+
+    echo $i . ' tour de boucle <br>';
+}
+
+//----------------------------------------------------------
+//EXERCICE : Affichez un selection option avec 52 options via une boucle 'for' DANS LE SENS INVERSE, c'est a dire pour afficher les annees allant de 2022 a 1970
+echo "<select name=''>";
+
+    for( $i = 2022; $i >= 1970; $i-- ){
+
+        echo "<option value='$i'> $i </option>";
+    }
+
+echo "</select><br>";
+
+?>
+
+<select name="" id="">
+
+    <?php for( $i = 2022; $i >= 1970; $i-- ) : ?>
+
+        <option value="<?= $i ?>"> <?= $i ?> </option>
+
+    <?php endfor; ?>
+
+</select>
+
+<?php
+//----------------------------------------------------------------
+//EXERCICE : Affichez les numeros allant de 1 a 10 dans un tableau SUR UNE SEULE LIGNE
+echo "<table border='2'>";
+    echo "<tr>";
+
+        for( $i = 1; $i <= 10; $i++ ){ //10 tours de boucle
+
+            echo "<td> $i </td>";
+        }
+
+    echo "</tr>";
+echo "</table>";
+
+//----------------------------------------------------------------
+//EXERCICE : boucles imbriquees : creer un tableau avec 10 lignes contenant 10 cellules avec les valeurs allant de 1 a 100
+
+$numero = 1; //initialisation d'une variable a UN
+
+echo "<table border='5'>";
+    for( $i = 1; $i <= 10; $i++ ){ //10 tours de boucle
+        echo "<tr>";
+            for( $j = 1; $j <= 10; $j++ ){ //10 tours de boucle
+
+                echo "<td> $numero </td>"; //Ici, on affiche la variable $numero
+
+                $numero++; //Incrementaiton, on rajoute +1 a la variable $numero APRES l'affichage dans la cellule
+            }
+        echo "</tr>";
+    }
+echo "</table><hr>";
+
+//----------------------------------------------------
+echo "<table border='1'>";
+    for( $ligne = 0; $ligne < 10; $ligne++ ){ //10 tours de boucle
+        echo "<tr>";
+            for( $cellule = 1; $cellule <= 10; $cellule++ ){ //10 tours de boucle
+
+                echo "<td>". ($cellule + ($ligne*10)) ."</td>";
+                 /*1er tour de boucle : $ligne = 0
+					//1er tour de la 2eme boucle : $cellule = 1
+						//=> 10 * 0 + 1 = 1
+					//2e tour de la 2eme boucle : $cellule = 2
+						//=> 10 * 0 + 2 = 2 .....
+
+                    1er tour de boucle : $ligne = 1
+                        //1er tour de la 2eme boucle : $cellule = 1
+                            //=> 10 * 1 + 1 = 11
+                        //2e tour de la 2eme boucle : $cellule = 2
+                            //=> 10 * 1 + 2 = 12 .....
+				*/
+            }
+        echo "</tr>";
+    }
+echo "</table>";
+
 
 
 
