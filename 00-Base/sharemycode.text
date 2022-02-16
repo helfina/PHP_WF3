@@ -729,7 +729,7 @@ echo "<table border='1'>";
 					//2e tour de la 2eme boucle : $cellule = 2
 						//=> 10 * 0 + 2 = 2 .....
 
-                    1er tour de boucle : $ligne = 1
+                    2èm tour de boucle : $ligne = 1
                         //1er tour de la 2eme boucle : $cellule = 1
                             //=> 10 * 1 + 1 = 11
                         //2e tour de la 2eme boucle : $cellule = 2
@@ -738,24 +738,237 @@ echo "<table border='1'>";
             }
         echo "</tr>";
     }
+echo "</table><hr>";
+
+//----------------------------------------------------
+echo "<table border='3'>";
+    echo "<tr>";
+    for( $i = 1; $i <= 100; $i++ ){ // 100tours de boucle
+
+        echo "<td>$i</td>";
+
+        if( $i % 10 == 0 ){ //Si le modulo de 10 est egal a ZERO, alors on ferme la balise <t/r>
+            if( $i == 100 ){ //Si on est a 100, on ferme la ligne
+
+                echo "</tr>";
+            }
+            else{ //SINON, c'est que l'on est a 10, 2, 30 etc.. et on ferme la ligne et ouvre la suivante
+
+                echo "</tr><tr>";
+            }
+        }
+    }
 echo "</table>";
 
+//--------------------------------------------------------------------
+echo "<h2> Les arrays + boucle foreach </h2>";
 
+$tableau = ['pomme', 'poire', 'peche']; //declaration d'un tableau avec des crochets et on separe les valeurs ave des virgules
 
+//echo $tableau; //ERROR ! IMPOSSIBLE d'AFFICHER UN TABLEAU TEL QUEL, il faut parcourir les donnees du tableau pou les afficher
 
+$tableau[] = "abricot"; //Ici, on rajoute une valeur a la fin du tableau
 
+print "<pre>";
+    var_dump( $tableau );
+    print_r( $tableau );
+print "</pre>";
 
+//Afficher 'peche':
+echo $tableau[2] . '<br>'; //Ici, pour afficher un element precis d'un tableau, il faut appeler le tableau et preciser entre crochets l'indice correspondant.
 
+//----------------------------------
+//Affichage de TOUTES les infos du tableau
+for( $i = 0; $i < 4; $i++ ){ //4 tours de boucles
 
+    echo "Valeur de i : $i => " . $tableau[$i] . '<br>';
+}
 
+//----------------------------------
+//count() et sizeof() : fonction php qui permettent de retourner la longueur d'un tableau
+echo "<hr>Taille du tableau : " . count( $tableau ) . '<br>';
+echo "Taille du tableau : " . sizeof( $tableau ) . '<br>';
 
+//----------------------------------
+$tableau[] = 'framboise'; //On rajoute une valeur au tableau
 
+//Affichage de toutes les informations du taleau de maniere dynamique, meme si l'on rajoute des elements a notre tableau, toutes les infos seront parcourues
+for( $i = 0; $i < sizeof( $tableau ); $i++ ){
 
+    echo "Valeur de i : $i => " . $tableau[$i] . '<br>';
+}
 
+//------------------------------------
+//Possibilite de declarer un tableau avec la fonction de php array() et on a egalement la possibilite de choisir les indices du tableau
+$couleur = array(
+                    'j' => 'jaune',
+                    'r' => 'rouge',
+                    'v' => ' vert'
+                );
 
+print '<pre>';
+    print_r( $couleur );
+print '</pre>';
 
+//Affichage de la couleur 'vert' :
+echo $couleur['v'] .'<hr>';
 
+//--------------------------------------------------------------
+//Boucle FOREACH() : FONCTIONNE UNIQUEMENT avec les tableaux ( ou objets ). Elle retournera un erreur si vous tentez de l'executer avec une variable autre qu'un array (ou object)
 
+    //La boucle foreach permet de passer en revu TOUTES les donnees d'un tableau !
 
+//Ici, on va parcourir le tableau '$couleur' ou les indices ne sont pas numeriques et donc on ne peut pas utiliser la boucle 'for'
+foreach( $couleur as $indice => $valeur ){
+
+    echo "Indice : $indice et sa valeur : $valeur <br>";
+}
+
+//Le premier argument (ici, '$couleur') de la boucle foreach DOIT IMPERATIVEMENT etre un array (ou object)
+//Le mot cle "as" est OBLIGATOIRE, il fait parti de la boucle foreach()
+
+//SI il y DEUX VARIABLES, en argument APRES le mot cle "AS", le premier (ici, '$indice') parcours la colonne des indices et le second, qui sera separe par la fleche '=>' (ici, '$valeur') parcours la colonne des valeurs du tableau (ici, '$couleur')
+
+//SI il n'y a qu'UNE SEULE VARIABLE en argument APRES le mot cle "as", alors cette variable parcours uniquement les valeurs du tableau
+foreach( $couleur as $value ){
+
+    echo $value . " / ";
+}
+
+echo "<hr>";
+
+//---------------------------------------
+//Autre syntaxe :
+//Ici, l'accolade ouvrante est remplacee par les deux points et l'accolade fermante est remplacee par 'endforeach'
+foreach( $tableau as $fruit ) :
+
+    echo $fruit . ' - ';
+
+endforeach;
+
+//--------------------------------------------------------------------
+echo "<h2> Les arrays multidimentionnels </h2>";
+//Les tableaux multi sont des tableaux a l'interieur d'un tableau
+
+$multi = array(
+                0 => array('prenom' => 'marco', 'nom' => 'polo' ),
+                1 => array('prenom' => 'bob', 'nom' => 'dylan' ),
+                2 => array('prenom' => 'marie', 'nom' => 'antoinette')
+            );
+
+print '<pre>';
+    print_r( $multi );
+print '</pre>';
+
+//Affichez 'antoinette' :
+echo $multi[2]['nom']  . '<hr>';
+
+//EXERCICE : parcourir toutes les infos du tableau ($multi) via des boucles foreach() :
+foreach( $multi as $index => $sous_tableau ){
+
+    // print '<pre>';
+    //     print_r( $sous_tableau );
+    // print '</pre>';
+
+    foreach( $sous_tableau as $indice => $valeur ){
+
+        echo $indice . " : " . $valeur . '<br>';
+    }
+}
+
+echo "<hr>";
+echo "<hr>";
+//-----------------------------------------
+for( $i = 0; $i < sizeof( $multi ); $i++ ){
+
+    print '<pre>';
+        print_r( $multi[$i] );
+    print '</pre>';
+
+    foreach( $multi[$i] as $indice => $valeur ){
+
+        echo $valeur . '<br>';
+    }
+}
+
+echo "<hr>";
+echo "<hr>";
+echo "<hr>";
+//-----------------------------------------
+foreach( $multi as $index => $valeur ){
+
+    print '<pre>';
+        print_r( $valeur );
+    print '</pre>';
+
+    echo $valeur['prenom'] . " : " . $valeur['nom'] . '<br>';
+}
+
+//--------------------------------------------------------------------
+echo "<h2> Les Objets </h2>";
+//Les objets sont un autre type de donnees. Un peu a la maniere des arrays, il permet de regrouper des informations.
+//Ici, on parlera de methodes (=fonctions) et de proprietes (=variables)
+
+class Etudiant{
+
+    public $prenom = "Jeremie"; //'public' : permet de dire que la propriete sera accessible partout VIA l'OBJET ! Il existe aussi 'protected' et 'private'
+
+    public $age = 12;
+
+    public function pays(){
+
+        return 'France';
+    }
+}
+
+//Une classe est un constructeur d'objet. Un objet est un conteneur symbolique qui possede sa PROPRE existance et incorpore des informations (proprietes) et des mecanismes (methodes)
+
+$etudiant1 = new Etudiant;
+//Le mot cle "new" permet d'instancier (deployer) la classe et de creer un objet (=instance). On se servira de ce qu'il y a a l'interieur de la classe VIA l'objet.
+
+//echo $etudiant1; //FATAL ERROR, on ne peut pas afficher les informations d'un opbjet tel quel.
+
+print '<pre>';
+    var_dump( $etudiant1 );
+    print_r( $etudiant1 );
+print '</pre>';
+
+//Affichage 'jeremie':
+echo $etudiant1->prenom . '<br>';
+
+//Dans un array, on va piocher les informations avec des crochets [], alors qu'ici, avec les objets, on utilisera la fleche '->' pour acceder aux proprietes et aux methodes de la classe via l'objet
+
+//Affichage de l'age :
+echo $etudiant1->age . '<br>';
+
+print '<pre>';
+    print_r( get_class_methods( $etudiant1 ) );
+    //get_class_methods( $object ) : fontion php qui permet de voir les methodes disponibles d'un objet
+print '</pre>';
+
+//Utilisation de la methode pays:
+echo $etudiant1->pays(); //Appel d'une methode via l'objet TOUJOURS AVEC LES PARENTHESES
+
+//--------------------------------------------------------------------
+echo "<h2> Les inclusions </h2>";
+
+echo "Premiere fois : <br>";
+include "exemple.inc.php"; //Inclusion du fichier exemple.inc.php A CET ENDROIT PRECIS
+
+echo "Deuxieme fois : <br>";
+include_once "exemple.inc.php"; //le "once" permet de verifier si le fichier a deja ete inclus ET si c'est le cas, il ne re-inclus pas !
+
+//------------------------------
+echo "<hr>Premiere fois : <br>";
+require "exemple.inc.php";
+
+echo "Deuxieme fois : <br>";
+require_once "exemple.inc.php";
+
+//La difference entre include et require :
+
+    //Include : fera erreur, si il y a un probleme avec le fichier a inclure et CONTINUE l'execution du script
+
+    //require : fera erreur, si il y a un probleme avec le fichier a inclure et STOP l'execution du script
 
 echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
