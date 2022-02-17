@@ -1,4 +1,4 @@
-<?php  require_once "inc/header.inc.php"; 
+<?php require_once "inc/header.inc.php"; 
 //inclusion du fichier 'header.inc.php' qui est dans un dossier 'inc' ?>
 
 <?php require_once "inc/nav.inc.php"; ?>
