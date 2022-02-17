@@ -38,3 +38,4 @@ echo $email = empty($email)  && empty($pseudo)  ?  "le champs sont obligatoir <b
 print '<pre>';
 print_r( $_POST );
 print '</pre>';
+

@@ -4,6 +4,10 @@
 <hr>
 
 <?php
+print '<pre>';
+print_r( $_POST );
+print '</pre>';
+
 echo $valid = (
                !empty($_POST['address']) &&
                !empty($_POST['ville']) &&
