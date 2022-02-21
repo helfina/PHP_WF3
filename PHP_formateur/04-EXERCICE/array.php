@@ -50,22 +50,39 @@ for( $i = 0 ; $i < count($tab_fruit); $i++ ){
 
     echo "<h4>$tab_fruit[$i]</h4>";
 
-    for( $j =0; $j < sizeof( $tab_poids ); $j++ ){
+    for( $j = 0; $j < sizeof( $tab_poids ); $j++ ){
 
         echo calcul( $tab_fruit[$i], $tab_poids[$j] );
     }
 }
 
-// 		4.7 - faire un affichage dans un tableau ('<table>') pour un affichage plus 'propre'
-// 			les titres des colonnes seront les poids
-// 			les titres des lignes seront les fruits
+// 4.7 - faire un affichage dans un tableau ('<table>') pour un affichage plus 'propre'
+// 		les titres des colonnes seront les poids
+// 		les titres des lignes seront les fruits
 
+echo "<table border='3'>"; //creation tableau
+    echo "<tr>"; // création de la première ligne du tableau
 
+        echo "<th> &nbsp; </th>"; //on rajoute une case vide
 
+        foreach( $tab_poids as $poids ){ //on crée une cellule pour chaque poids
 
+            echo "<th> $poids </th>";
+        }
+    echo "</tr>";
 
+    foreach( $tab_fruit as $fruit ){ //on crée une ligne pour chaque fruit
 
+        echo '<tr>';
+            echo "<th> $fruit </th>";
 
+            foreach( $tab_poids as $poids ){ //on parcours tous les poids pour les passer en argument de la fonction calcul() et on crée une cellule pour chaque prix
+
+                echo "<td>" . calcul( $fruit, $poids ) . "</td>";
+            }
+        echo '</tr>';
+    }
+echo "</table>";
 
 
 

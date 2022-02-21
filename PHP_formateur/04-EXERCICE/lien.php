@@ -7,7 +7,7 @@ print '</pre>';
 
 include "fonction.inc.php"; //INCLUSION du fichier : fonction.inc.php pour pouvoir incorporer A CET ENDROIT PRECIS, la fonction calcul() et donc de pouvoir l'utiliser et acceder au prix au kg dans ce fichier
 
-if( isset($_GET['fruit']) ){ //SI il existe $_GET['fruit] c'est que l'on a clique sur un lien et que la cle 'fruit' a ete passee dans l'URL 
+if( isset( $_GET['fruit'] ) ){ //SI il existe $_GET['fruit] c'est que l'on a clique sur un lien et que la cle 'fruit' a ete passee dans l'URL 
 
     echo calcul( $_GET['fruit'], 1000 );
 }

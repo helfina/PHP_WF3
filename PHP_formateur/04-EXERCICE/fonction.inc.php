@@ -26,5 +26,5 @@ function calcul( $fruit, $poids ){
     return "Les $fruit coutent $prix_total € pour un poids de $poids grammes<br>";
 }
 
-// echo calcul( 'pommes', 12300 );
-// echo calcul( 'cerises', 3 );
+//echo calcul( 'pommes', 12300 );
+
