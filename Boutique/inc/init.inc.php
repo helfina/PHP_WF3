@@ -4,11 +4,11 @@ session_start(); //Création/ouverture fichier de session
 
 //----------------------------------------------------
 //Connexion à la BDD 'boutique' :
-$pdo = new PDO('mysql:host=localhost;dbname=boutique', 'root', '', array(PDO:: ATTR_ERRMODE=>PDO::ERRMODE_WARNING ) );
+$pdo = new PDO('mysql:host=localhost;dbname=boutique', 'root', 'root', array(PDO:: ATTR_ERRMODE=>PDO::ERRMODE_WARNING ) );
 
 //----------------------------------------------------
 //definition d'une constante :
-define( 'URL', "http://php_wf3.test/Boutique/index1.php");
+define( 'URL', "http://php_wf3.test/Boutique/");
 //Correspond à l'URL de notre site
 
 //----------------------------------------------------
@@ -17,3 +17,5 @@ $content = ''; // variable prévue pour recevoir du contenu
 $error = ''; // variable prévue pour recevoir les messages d'erreurs
 
 //----------------------------------------------------
+//Inclusion des fonctions :
+require_once "fonction.inc.php";
