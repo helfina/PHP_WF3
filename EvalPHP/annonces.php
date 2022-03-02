@@ -43,7 +43,7 @@ while( $ligne = $r->fetch( PDO::FETCH_ASSOC ) ){
                             </td>";
     if (empty($ligne['reservation_message'])){
         $content .= "<td>
-                                <a style='text-decoration: none; color: black;' class='btn bg-primary' href='?action=reserver&id=$ligne[id]' >
+                                <a style='text-decoration: none; color: black;' class='btn bg-primary' href='annonce.php?action=reserver&id=$ligne[id]' >
                                     Reserver
                                 </a>
                             </td>";
