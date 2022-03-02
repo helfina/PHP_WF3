@@ -39,20 +39,14 @@ if ($_POST) { //SI on valide le formulaire
     if (empty($error)) { //Si la variable '$error' est vide, c'est que le formulaire a été rempli correctement
         echo "ok";
 
-        /* !TODO corriger l'erreur de syntaxe sql
-            Warning: PDO::query(): SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 9 in C:\MAMP\www\PHP_WF3\EvalPHP\inc\functions.inc.php on line 26
-        */
-
-        execute_requete(" 
-        
-        INSERT INTO advert('title', 'description', 'postal_code', 'city', 'type', 'price')
+        execute_requete("INSERT INTO advert(title, description, postal_code, city, type, price)
                     VALUES(
                             '$_POST[title]',
                             '$_POST[description]',
                             '$_POST[postal_code]',
                             '$_POST[city]',
                             '$_POST[type]',
-                            '$_POST[price]',
+                            '$_POST[price]'
                     )
         ");
 
