@@ -2,10 +2,9 @@
 //Création/ouverture du fichier de session
 session_start();
 //PREMIRE LIGNE DE CODE, se positionne en haut et en premier avant tout traitements php
-$base = 'wf3_php_intermediaire_gaelle';
 //------------------------------------------------------------
 //Connexion à la BDD : 'boutique'
-$pdo  = new PDO('mysql:host=localhost;dbname=' . $base , 'root', 'root' , array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_WARNING ) );
+$pdo  = new PDO('mysql:host=localhost;dbname=wf3_php_intermediaire_gaelle', 'root', 'root' , array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_WARNING ) );
 
 //------------------------------------------------------------
 //definition d'une constante :

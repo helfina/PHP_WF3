@@ -17,13 +17,14 @@ echo "<div style='background:#fda500; z-index:1000; padding: 20px;' >";
     echo "</div>";
 }
 
-//----------------------------------------------------------
-//Fonction pour exécuter la requête :
+//---------------------------------------------------------
+//fonction pour exécuter la requête :
 function execute_requete( $req ){
 
-global $pdo;
+    global $pdo; //global : permet de rappatrier la variable '$pdo' dans l'espace confiné de la fonction
 
-$pdostatement = $pdo->query( $req );
+    $pdostatement = $pdo->query($req);
 
-return $pdostatement;
+    return $pdostatement;
 }
+
