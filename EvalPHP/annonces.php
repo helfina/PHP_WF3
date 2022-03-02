@@ -49,7 +49,7 @@ while( $ligne = $r->fetch( PDO::FETCH_ASSOC ) ){
                             </td>";
     }else{
         $content .= "<td>
-                                <a href='?action=reserver&id=$ligne[id]' style='text-decoration: none; color: black;' class='invisible'>
+                                <a href='annonce.php?action=reserver&id=$ligne[id]' style='text-decoration: none; color: black;' class='invisible'>
                                     Reserver
                                 </a>
                             </td>";
