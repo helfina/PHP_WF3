@@ -35,9 +35,10 @@ while( $ligne = $r->fetch( PDO::FETCH_ASSOC ) ){
     }
 //http://php_wf3.test/EvalPHP/anonce.php?action=consulter&id=1 de la page annonces
 //http://php_wf3.test/EvalPHP/annonce.php?action=consulter&id=20 de la page home
+    //corriger erreur liens
     $content .= "<td>
                                 <a href= 'anonce.php?action=consulter&id=$ligne[id]' style='text-decoration: none;  color: black'>
-                                    Consulter l'annonce
+                                    Voir l'annonce
                                 </a>
                             </td>";
     if (empty($ligne['reservation_message'])){

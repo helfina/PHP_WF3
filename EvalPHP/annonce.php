@@ -1,21 +1,24 @@
 <?php
 require_once "inc/header.inc.php";
-if(  isset( $_GET['id'] ) ){
+if(!empty( $_POST['reservation_message'] ) ){
+    //debug($_POST);
+    execute_requete("UPDATE advert SET reservation_message = '$_POST[reservation_message]' WHERE id = $_GET[id]");
+}
+
+    if(  isset( $_GET['id'] ) ){
     $requeteAnnonce = execute_requete(" SELECT * FROM advert WHERE id = $_GET[id] ");
     $annonce = $requeteAnnonce->fetch( PDO::FETCH_ASSOC );
-    debug( $annonce );
+    //debug( $annonce );
 
-//créer 2 liens : (file d'ariane)
-    //l'un pour permettre de retourner à l'accueil
-    //l'autre pour retourner à la catégorie précédente
+    //file d'ariane
     $content .= "<a href='index.php'> Accueil </a> / ";
     $content .= "<a href='annonces.php'> Toutes les annonces </a> / ";
 
 }else{
-
     header('Location:index.php');
     exit;
 }
+
 ?>
 
 <h1 class="text-center">Annonce <?= $annonce['title']?> </h1>
@@ -34,22 +37,20 @@ if(  isset( $_GET['id'] ) ){
     
     <?php
 
-    if ( !empty($annonce['reservation_message'])){
-
-
-
-    ?>
+    if (empty($annonce['reservation_message'])){ ?>
     <form action="" method="post" class="form-floating">
         <?= "<div class='text-center mt-3 mb-3 bg-danger'>" . $error . "</div>";  //Affichage des messages d'erreurs ?>
 
-        <textarea class="form-control" placeholder="Votre Message" id="floatingTextarea"></textarea>
-        <label for="floatingTextarea">Votre message</label>
+        <textarea class="form-control" name="reservation_message" placeholder="Votre Message" id="reservation_message"></textarea>
+        <label for="reservation_message">Votre message</label>
 
         <input type="submit" value=" Je réserve" class="btn btn-primary mt-3">
 
     </form>
         <?php
-    }
+            }else{ ?>
+            <p><?= $annonce['reservation_message']?></p>
+    <?php }
         ?>
 </main>
 <?php
